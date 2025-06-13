@@ -1,0 +1,27 @@
+"""示例程序：调用OpenAI GPT模型来回答天气问题。"""
+
+# 导入所需库
+import openai
+
+# 设置你的OpenAI API密钥
+# 请确保在实际使用时将其替换为你自己的密钥，切勿在公开代码中泄露
+openai.api_key = "YOUR_API_KEY"
+
+# 定义要发送给GPT模型的消息
+messages = [
+    {
+        "role": "user",
+        "content": "今天天气怎么样"
+    }
+]
+
+# 调用ChatGPT模型（gpt-3.5-turbo）
+response = openai.ChatCompletion.create(
+    model="gpt-3.5-turbo",
+    messages=messages
+)
+
+# 输出模型回复
+answer = response.choices[0].message["content"].strip()
+print("GPT的回答:", answer)
+
